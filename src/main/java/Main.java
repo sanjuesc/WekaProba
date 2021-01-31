@@ -2,6 +2,7 @@ import weka.*;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.evaluation.ConfusionMatrix;
 import weka.core.Capabilities;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -27,6 +28,7 @@ public class Main {
         Evaluation eval = new Evaluation(data);
         eval.crossValidateModel(c, data, 3, new Random());
         eval.confusionMatrix();
+        System.out.println(eval.toMatrixString("num"));
         System.out.println(eval.errorRate());
         System.out.println("-----------------");
         System.out.println(eval.weightedPrecision());
